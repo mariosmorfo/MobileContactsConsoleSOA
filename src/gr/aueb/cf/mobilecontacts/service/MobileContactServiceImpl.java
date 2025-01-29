@@ -27,7 +27,7 @@ public class MobileContactServiceImpl implements  IMobileContactService {
             }
                 mobileContact = Mapper.mapInsertDTOToContact(dto);
 
-            System.err.printf("MobileContactServiceImpl logger: %s was insert\n", mobileContact);
+            System.err.printf("MobileContactServiceImpl logger: %s was insert.\n", mobileContact);
             return dao.insert(mobileContact);
 
 

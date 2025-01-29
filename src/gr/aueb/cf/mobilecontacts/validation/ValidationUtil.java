@@ -12,7 +12,7 @@ public class ValidationUtil {
     public static String validateDTO(MobileContactInsertDTO insertDTO){
         String errorResponse = "";
 
-        if(insertDTO.getPhoneNumber().length() <= 5) errorResponse += "Ο Τηλ. Αριθμός πρέπει να έχει περισσότερα απο πέντε σύμβολα\n";
+        if(insertDTO.getPhoneNumber().length() <= 5) errorResponse += "Ο Τηλ.Αριθμός πρέπει να έχει περισσότερα από πέντε σύμβολα\n";
 
         if(insertDTO.getFirstname().length() < 2) errorResponse += "Το όνομα πρέπει να περιέχει δυο ή περισσότερους χαρακτήρες\n";
 

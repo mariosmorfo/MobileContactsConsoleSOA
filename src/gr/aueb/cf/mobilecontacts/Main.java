@@ -4,6 +4,7 @@ import gr.aueb.cf.mobilecontacts.controller.MobileContactController;
 import gr.aueb.cf.mobilecontacts.dto.MobileContactInsertDTO;
 import gr.aueb.cf.mobilecontacts.dto.MobileContactUpdateDTO;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -18,6 +19,7 @@ public class Main {
             choice = getToken();
 
                 if(choice.equals("Q") || (choice.equals("q"))) {
+                    System.out.println("Έξοδος...");
                     break;
                 }
                 handleChoice(choice);
@@ -88,12 +90,29 @@ public class Main {
                 break;
 
             case "4" :
+                System.out.println("Εισάγετε κωδικό επαφής");
+                id = Long.parseLong(getToken());
+                response = controller.getContactById(id);
+                if(response.startsWith("OK")){
+                    System.out.println("Επιτυχής αναζήτηση");
+                    System.out.println(response.substring(3));
+                }else{
+                    System.out.println("Αποτυχής αναζήτηση");
+                    System.out.println(response.substring(6));
+                }
+
                 break;
 
             case "5" :
+                List<String> mobileContacts = controller.getAllContacts();
+                if(mobileContacts.isEmpty()){
+                    System.out.println("Κενή λίστα");
+                }
+                mobileContacts.forEach(System.out::println);
                 break;
 
             default:
+                System.out.println("Λάθος Επιλογή");
                 break;
         }
     }

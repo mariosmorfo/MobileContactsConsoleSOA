@@ -71,10 +71,10 @@ public class MobileContactServiceImpl implements  IMobileContactService {
             if(! dao.userIdExists(id)) {
                 throw new ContactNotFoundException("Contact with id: %d " + id + " not found for delete.\n");
             }
-            System.err.printf("MobileContactServiceImpl Logger: contact with id: %d " + id + " was deleted\n");
+            System.err.println("MobileContactServiceImpl Logger: contact with id: %d " + id + " was deleted\n");
             dao.deleteById(id);
         }catch (ContactNotFoundException e){
-            System.err.printf("MobileContactServiceImpl Logger: " + e.getMessage());
+            System.err.println("MobileContactServiceImpl Logger: %s " + e.getMessage());
             throw e;
         }
     }

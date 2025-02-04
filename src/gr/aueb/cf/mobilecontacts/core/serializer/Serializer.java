@@ -13,6 +13,6 @@ public class Serializer {
 
     }
     public static String serializeDTO(MobileContactReadOnlyDTO readOnlyDTO){
-        return "ID: " + readOnlyDTO.getId() + "Όνομα: " + readOnlyDTO.getFirstname() + "Επώνυμο: " + readOnlyDTO.getLastname() + "Τηλ Αριθμός: " + readOnlyDTO.getPhoneNumber();
+        return "ID: " + readOnlyDTO.getId() + " Όνομα: " + readOnlyDTO.getFirstname() + " Επώνυμο: "+ readOnlyDTO.getLastname() + " Τηλ Αριθμός: "+ readOnlyDTO.getPhoneNumber();
     }
 }

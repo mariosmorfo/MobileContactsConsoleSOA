@@ -2,6 +2,7 @@ package gr.aueb.cf.mobilecontacts;
 
 import gr.aueb.cf.mobilecontacts.controller.MobileContactController;
 import gr.aueb.cf.mobilecontacts.dto.MobileContactInsertDTO;
+import gr.aueb.cf.mobilecontacts.dto.MobileContactUpdateDTO;
 
 import java.util.Scanner;
 
@@ -49,9 +50,41 @@ public class Main {
                 break;
 
             case "2" :
+                System.out.println("Εισάγεται Αριθμό τηλεφώνου");
+                phoneNumber = getToken();
+                response = controller.getContactByPhoneNumber(phoneNumber);
+                if(response.startsWith("Error")){
+                    System.out.println("Η επαφή δεν βρέθηκε");
+                    System.out.println(response.substring(3));
+                    return;
+                }
+
+                System.out.println("Ανεπιτυχής εισαγωγή");
+                System.out.println(response.substring(6));
+                System.out.println("Εισάγεται το υπάρχον ID");
+                long oldId = Long.parseLong(getToken());
+                System.out.println("Παρακαλώ εισάγετε νέο όνομα");
+                firstname = getToken();
+                System.out.println("Παρακαλώ εισάγετε νέο επίθετο");
+                lastname = getToken();
+                System.out.println("Παρακαλώ εισάγετε νέο τηλεφωνικό αριθμό");
+                phoneNumber = getToken();
+                MobileContactUpdateDTO mobileContactUpdateDTO = new MobileContactUpdateDTO(oldId, firstname, lastname, phoneNumber);
+                response = controller.updateContact(mobileContactUpdateDTO);
+                System.out.println(response);
                 break;
 
             case "3":
+                System.out.println("Εισάγετε κωδικό επαφής");
+                Long id = Long.parseLong(getToken());
+                response = controller.deleteContactById(id);
+                if(response.startsWith("OK")){
+                    System.out.println("Επιτυχής διαγραφή");
+                    System.out.println(response.substring(3));
+                }else{
+                    System.out.println("Ανεπιτυχής Διαγραφή");
+                    System.out.println(response.substring(6));
+                }
                 break;
 
             case "4" :

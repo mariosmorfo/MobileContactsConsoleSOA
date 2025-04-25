@@ -9,7 +9,7 @@ Update existing contacts by ID
 
  Find a contact by ID or Phone Number
 
-🗑Delete a contact by ID or Phone Number
+Delete a contact by ID or Phone Number
 
  View all stored contacts
 
